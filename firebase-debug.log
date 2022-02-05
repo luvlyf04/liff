@@ -1,0 +1,47 @@
+[debug] [2022-02-05T12:16:05.517Z] ----------------------------------------------------------------------
+[debug] [2022-02-05T12:16:05.519Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\AphiratNimanussonkul\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2022-02-05T12:16:05.519Z] CLI Version:   10.1.4
+[debug] [2022-02-05T12:16:05.519Z] Platform:      win32
+[debug] [2022-02-05T12:16:05.519Z] Node Version:  v14.17.4
+[debug] [2022-02-05T12:16:05.520Z] Time:          Sat Feb 05 2022 19:16:05 GMT+0700 (Indochina Time)
+[debug] [2022-02-05T12:16:05.520Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-02-05T12:16:05.591Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-02-05T12:16:05.591Z] > authorizing via signed-in user (compro512564@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  G:\งาน ม.5 2564\โครงงาน\Demo\liff
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2022-02-05T12:16:44.109Z] Using project from CLI flag: notification-demo-dc9b6
+[debug] [2022-02-05T12:16:44.111Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/notification-demo-dc9b6 [none]
+[debug] [2022-02-05T12:16:44.524Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/notification-demo-dc9b6 200
+[debug] [2022-02-05T12:16:44.525Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/notification-demo-dc9b6 {"projectId":"notification-demo-dc9b6","projectNumber":"951634503640","displayName":"Notification Demo","name":"projects/notification-demo-dc9b6","resources":{"hostingSite":"notification-demo-dc9b6","storageBucket":"notification-demo-dc9b6.appspot.com","locationId":"asia-southeast1"},"state":"ACTIVE"}
+[info] i  Using project notification-demo-dc9b6 (Notification Demo) 
+[info] 
+=== Hosting:github Setup
+[info] 
+[info] i  Detected a .git folder at G:\งาน ม.5 2564\โครงงาน\Demo\liff 
+[info] i  Authorizing with GitHub to upload your service account to a GitHub repository's secrets store. 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://github.com/login/oauth/authorize?client_id=89cf50f02ac6aaed3484&state=257519684&redirect_uri=http%3A%2F%2Flocalhost%3A9005&scope=read%3Auser%20repo%20public_repo
+[info] 
+[info] Waiting for authentication...

@@ -1,5 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
+import { test1 } from "./service/firebase";
 
 const liff = window.liff;
 
@@ -19,7 +20,10 @@ function App() {
     <div className="container">
       <img id="pictureUrl" src={imageProfile} alt="imageProfile"/>
       <input type="text" id="fullname" />
-      <button> ลงทะเบียน</button>
+      <button onClick={()=>{
+        console.log("onclick")
+        test1()
+      }}> ลงทะเบียน</button>
     </div>
   );
 }
