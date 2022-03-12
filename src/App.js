@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import { test1 } from "./service/firebase";
+import { insert } from "./service/google-sheet";
 
 const liff = window.liff;
 
@@ -24,8 +25,17 @@ function App() {
       <input type="text" id="fullname" />
       <button
         onClick={() => {
+          const fullName = document.getElementById("fullname").value
           console.log("onclick");
-          test1(document.getElementById("fullname").value, userId);
+          test1(fullName, userId);
+          insert({
+            time: new Date(),
+            fullName: fullName,
+            phamacyName: "พาราเซตามอล",
+            amount: 2,
+            takeTime: new Date(),
+            userId: userId,
+          })
         }}
       >
         {" "}
