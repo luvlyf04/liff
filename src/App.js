@@ -57,6 +57,17 @@ function App() {
         {" "}
         ลงทะเบียน
       </button>
+
+      <button
+        onClick={() => {
+          liff.scanCode().then(result => {
+            const stringifiedResult = JSON.stringify(result);
+            alert(stringifiedResult);
+          });
+        }}
+      >
+        Scan QR Code
+      </button>
     </div>
   );
 }
