@@ -2,6 +2,7 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import { test1 } from "./service/firebase";
 import { insert } from "./service/google-sheet";
+import { async } from "@firebase/util";
 
 const liff = window.liff;
 
@@ -13,10 +14,20 @@ function App() {
   }, []);
 
   const initLiff = async () => {
-    await liff.init({ liffId: "1656846738-laQ554Ad" });
-    const profile = await liff.getProfile();
-    setImageProfile(profile.pictureUrl);
-    setUserId(profile.userId);
+    liff.init(
+      { liffId: "1656846738-laQ554Ad" },
+      async() => {
+        if (liff.isLoggedIn()) {
+          const profile = await liff.getProfile();
+          setImageProfile(profile.pictureUrl);
+          setUserId(profile.userId);
+        } else {
+          liff.login();
+        }
+      },
+      (err) => console.error(err.code, err.message)
+    );
+    
   };
 
   return (
@@ -59,11 +70,14 @@ function App() {
       </button>
 
       <button
-        onClick={() => {
-          liff.scanCode().then(result => {
-            const stringifiedResult = JSON.stringify(result);
-            alert(stringifiedResult);
-          });
+        onClick={async () => {
+          try {
+            const result = await liff.scanCodeV2();
+
+            alert(result.value);
+          } catch (error) {
+            alert(error);
+          }
         }}
       >
         Scan QR Code
