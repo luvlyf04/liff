@@ -23,18 +23,24 @@ function App() {
     <div className="container">
       <img id="pictureUrl" src={imageProfile} alt="imageProfile" />
       <input type="text" id="fullname" placeholder="ชื่อ-นามสกุล" />
-      <input type="text" id="phamacyName" placeholder="ชื่อยา"/>
-      <input type="number" id="amount" placeholder="จำนวนยา(เม็ด)"/>
-      <input type="radio" id="before" name="takeTime"value="ก่อนอาหาร" />
-      <label for="before">ก่อนอาหาร</label>
-      <input type="radio" id="after" name="takeTime"value="หลังอาหาร" />
-      <label for="after">หลังอาหาร</label>
+      <input type="text" id="phamacyName" placeholder="ชื่อยา" />
+      <input type="number" id="amount" placeholder="จำนวนยา(เม็ด)" />
+      <div className="checkbox">
+        <input type="radio" id="before" name="takeTime" value="ก่อนอาหาร" />
+        <label for="before">ก่อนอาหาร</label>
+      </div>
+
+      <div className="checkbox">
+        <input type="radio" id="after" name="takeTime" value="หลังอาหาร" />
+        <label for="after">หลังอาหาร</label>
+      </div>
+
       <button
         onClick={() => {
-          const fullName = document.getElementById("fullname").value
-          const phamacyName = document.getElementById("phamacyName").value
-          const amount= document.getElementById("amount").value
-          // console.log(document.getElementsByName("takeTime"))          
+          const fullName = document.getElementById("fullname").value;
+          const phamacyName = document.getElementById("phamacyName").value;
+          const amount = document.getElementById("amount").value;
+          // console.log(document.getElementsByName("takeTime"))
           // const takeTime= document.getElementsByName("takeTime").find(choice=>choice.checked).value
           console.log("onclick");
           test1(fullName, userId);
@@ -45,7 +51,7 @@ function App() {
             amount: amount,
             takeTime: "ก่อนอาหาร",
             userId: userId,
-          })
+          });
         }}
       >
         {" "}
