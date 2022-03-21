@@ -73,8 +73,15 @@ function App() {
         onClick={async () => {
           try {
             const result = await liff.scanCodeV2();
+            const detail = JSON.parse(result.value)
 
-            alert(result.value);
+            insert({
+              time: detail.time,
+              fullName: detail.fullName,
+              phamacyName: detail.phamacyName,
+              amount: detail.amount,
+              takeTime: detail.takeTime,
+              userId: userId, })
           } catch (error) {
             alert(error);
           }
