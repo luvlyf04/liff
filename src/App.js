@@ -12,7 +12,7 @@ function App() {
         <Route path="scan-qr" element={ <ScanQR/> } />
         <Route path="add" element={ <Add/> } />
       </Routes>
-      <div>
+      <div className="flex justify-around bg-blue-300 fixed bottom-0 w-full py-6">
           <button onClick={()=>navigate("/")}>Home</button>
           <button onClick={()=>navigate("/scan-qr")}>Scan QR</button>
           <button onClick={()=>navigate("/add")}>Add</button>

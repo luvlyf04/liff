@@ -1,3 +1,3 @@
 export const Home =()=>{
-    return<div>home page</div>
+    return<div className="text-lg text-gray-400">home page</div>
 }
