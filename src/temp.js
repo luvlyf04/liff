@@ -34,7 +34,7 @@ function App() {
     <div className="container">
       <img id="pictureUrl" src={imageProfile} alt="imageProfile" />
       <input type="text" id="fullname" placeholder="ชื่อ-นามสกุล" />
-      <input type="text" id="phamacyName" placeholder="ชื่อยา" />
+      <input type="text" id="pharmacyName" placeholder="ชื่อยา" />
       <input type="number" id="amount" placeholder="จำนวนยา(เม็ด)" />
       <div className="checkbox">
         <input type="radio" id="before" name="takeTime" value="ก่อนอาหาร" />
@@ -49,7 +49,7 @@ function App() {
       <button
         onClick={() => {
           const fullName = document.getElementById("fullname").value;
-          const phamacyName = document.getElementById("phamacyName").value;
+          const pharmacyName = document.getElementById("pharmacyName").value;
           const amount = document.getElementById("amount").value;
           // console.log(document.getElementsByName("takeTime"))
           // const takeTime= document.getElementsByName("takeTime").find(choice=>choice.checked).value
@@ -58,7 +58,7 @@ function App() {
           insert({
             time: new Date(),
             fullName: fullName,
-            phamacyName: phamacyName,
+            pharmacyName: pharmacyName,
             amount: amount,
             takeTime: "ก่อนอาหาร",
             userId: userId,
@@ -80,7 +80,7 @@ function App() {
             insert({
               time: new Date(),
               fullName: detail.fullName,
-              phamacyName: detail.phamacyName,
+              pharmacyName: detail.pharmacyName,
               quantity: detail.quantity,
               takeTime: detail.takeTime,
               meal: detail.meal, 
