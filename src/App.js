@@ -26,11 +26,19 @@ function App() {
       async () => {
         if (liff.isLoggedIn()) {
           const profile = await liff.getProfile();
+          console.log(profile)
           setDetail({
-            userId:profile.userId
+            userId:profile.userId,
+            ...detail
           })
         } else {
-          liff.login();
+          await liff.login();
+          const profile = await liff.getProfile();
+          console.log(profile)
+          setDetail({
+            userId:profile.userId,
+            ...detail
+          })
         }
       },
       (err) => console.error(err.code, err.message)
@@ -39,17 +47,19 @@ function App() {
   };
   const scanQR =async() => {
     try {
+      console.log(detail)
       const result = await liff.scanCodeV2();
       console.log(result.value)
-      const detail = JSON.parse(result.value)
-      console.log(detail)
+      const data = JSON.parse(result.value)
+      console.log(data)
       setDetail({
-        fullName: detail.fullName,
-      pharmacyName:  detail.pharmacyName,
-      quantity: detail.quantity,
-      takeTime: detail.takeTime,
-      meal: detail.meal,
-      tablet: detail.tablet,
+        fullName: data.fullName,
+      pharmacyName:  data.pharmacyName,
+      quantity: data.quantity,
+      takeTime: data.takeTime,
+      meal: data.meal,
+      tablet: data.tablet,
+      userId: detail.userId,
       })
       navigate("/add")
 
