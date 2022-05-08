@@ -28,16 +28,16 @@ function App() {
           const profile = await liff.getProfile();
           console.log(profile)
           setDetail({
+            ...detail,
             userId:profile.userId,
-            ...detail
           })
         } else {
           await liff.login();
           const profile = await liff.getProfile();
           console.log(profile)
           setDetail({
+            ...detail,
             userId:profile.userId,
-            ...detail
           })
         }
       },
