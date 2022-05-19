@@ -1,70 +1,77 @@
-import { Routes, Route } from "react-router-dom"
-import { Add } from "./pages/add"
-import { Home } from "./pages/home"
-import { ScanQR } from "./pages/scan-qr"
-import { useNavigate } from "react-router"
+import { Routes, Route } from "react-router-dom";
+import { Add } from "./pages/add";
+import { Home } from "./pages/home";
+import { ScanQR } from "./pages/scan-qr";
+import { useLocation, useNavigate } from "react-router";
 import React, { useState, useEffect } from "react";
+import { WelcomePage } from "./pages/welcome";
 
 const liff = window.liff;
 function App() {
-  const navigate = useNavigate()
-  const [detail,setDetail] = useState({
-      fullName: "",
-      pharmacyName: "",
-      quantity: "",
-      takeTime: "",
-      meal: "",
-      tablet: "",
-      userId: "",
-    });
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [isWelcomePage, setIsWelcomePage] = useState(true);
+  const [detail, setDetail] = useState({
+    fullName: "",
+    pharmacyName: "",
+    quantity: "",
+    takeTime: "",
+    meal: "",
+    tablet: "",
+    userId: "",
+  });
   useEffect(() => {
     initLiff();
   }, []);
+  useEffect(() => {
+    if (location.pathname == "/") {
+      setIsWelcomePage(true);
+    } else {
+      setIsWelcomePage(false);
+    }
+  }, [location.pathname]);
   const initLiff = async () => {
     liff.init(
       { liffId: "1656846738-laQ554Ad" },
       async () => {
         if (liff.isLoggedIn()) {
           const profile = await liff.getProfile();
-          console.log(profile)
+          console.log(profile);
           setDetail({
             ...detail,
-            userId:profile.userId,
-          })
+            userId: profile.userId,
+          });
         } else {
-          await liff.login();
-          const profile = await liff.getProfile();
-          console.log(profile)
-          setDetail({
-            ...detail,
-            userId:profile.userId,
-          })
+          // await liff.login();
+          // const profile = await liff.getProfile();
+          // console.log(profile)
+          // setDetail({
+          //   ...detail,
+          //   userId:profile.userId,
+          // })
         }
       },
       (err) => console.error(err.code, err.message)
     );
-
   };
-  const scanQR =async() => {
+  const scanQR = async () => {
     try {
-      console.log(detail)
+      console.log(detail);
       const result = await liff.scanCodeV2();
-      console.log(result.value)
-      const data = JSON.parse(result.value)
-      console.log(data)
+      console.log(result.value);
+      const data = JSON.parse(result.value);
+      console.log(data);
       setDetail({
         fullName: data.fullName,
-      pharmacyName:  data.pharmacyName,
-      quantity: data.quantity,
-      takeTime: data.takeTime,
-      meal: data.meal,
-      tablet: data.tablet,
-      userId: detail.userId,
-      })
-      navigate("/add")
+        pharmacyName: data.pharmacyName,
+        quantity: data.quantity,
+        takeTime: data.takeTime,
+        meal: data.meal,
+        tablet: data.tablet,
+        userId: detail.userId,
+      });
+      navigate("/add");
 
-
-    
       // insert({
       //   time: new Date(),
       //   fullName: detail.fullName,
@@ -75,27 +82,33 @@ function App() {
       //   tablet: detail.tablet,
       //   userId: userId,
       // })
-
     } catch (error) {
       alert(error);
     }
-  }
+  };
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<WelcomePage />} />
+        <Route path="home" element={<Home />} />
         <Route path="scan-qr" element={<ScanQR />} />
         <Route path="add" element={<Add detail={detail} />} />
       </Routes>
-      <div className="flex justify-around bg-blue-300 fixed bottom-0 w-full py-6">
-        <button onClick={() => navigate("/")}>Home</button>
-        <button onClick={() => {
-          scanQR()
-        }}>Scan QR</button>
-        <button onClick={() => navigate("/add")}>Add</button>
-      </div>
+      {!isWelcomePage && (
+        <div className="flex justify-around bg-blue-300 fixed bottom-0 w-full py-6">
+          <button onClick={() => navigate("/home")}>Home</button>
+          <button
+            onClick={() => {
+              scanQR();
+            }}
+          >
+            Scan QR
+          </button>
+          <button onClick={() => navigate("/add")}>Add</button>
+        </div>
+      )}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
