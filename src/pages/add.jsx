@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 import React, { useState, useEffect } from "react";
 import { insert } from "../service/google-sheet";
 import ConfirmDialog from "../components/confirm-dialog";
+import SuccessDialog from "../components/success-dialog ";
 export const Add = ({ detail }) => {
   const navigate = useNavigate();
   const [fullName, setFullName] = useState(detail.fullName);
@@ -13,6 +14,7 @@ export const Add = ({ detail }) => {
     detail.meal ? detail.meal.split(",").map((item) => item.trim()) : []
   );
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
 
   const getTakeTime = (takeTime, meal) => {
     const min = takeTime == "ก่อนอาหาร" ? -15 : 30;
@@ -58,12 +60,29 @@ export const Add = ({ detail }) => {
       }
       futureDate += 1;
     }
-    navigate("/");
+    setShowSuccessDialog(true);
   }
 
   return (
     <>
-      {showConfirmDialog && <ConfirmDialog onCancel={()=>setShowConfirmDialog(false)}></ConfirmDialog>}
+      {showConfirmDialog && (
+        <ConfirmDialog
+          onCancel={() => setShowConfirmDialog(false)}
+          onConfirm={() => {
+            setShowConfirmDialog(false);
+            addSchedule();
+            
+          }}
+        ></ConfirmDialog>
+      )}
+      {showSuccessDialog && (
+        <SuccessDialog
+          onConfirm={() => {
+            setShowSuccessDialog(false)
+            navigate("/home");
+          }}
+        ></SuccessDialog>
+      )}
       <div className="px-8 pt-16 pb-24">
         <div className="text-xl text-primary-400">เพิ่มตารางทานยา</div>
         <div className="text-gray-400">กรุณากรอกข้อมูลให้ครบถ้วน</div>

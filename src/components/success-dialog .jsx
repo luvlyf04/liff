@@ -1,4 +1,4 @@
-const ConfirmDialog = ({onCancel,onConfirm}) => {
+const SuccessDialog = ({onConfirm}) => {
   return (
     <div
       className="relative z-10"
@@ -13,34 +13,27 @@ const ConfirmDialog = ({onCancel,onConfirm}) => {
           <div className="relative bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full">
             <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
               <div className="flex flex-col items-center">
-                <img src="/assets/images/conimg.png" className="w-1/2 "></img>
+                <img src="/assets/images/success.png" className="w-1/2 "></img>
                 <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                   <h3
                     className="text-2xl leading-6 font-medium text-primary-400 font-bold"
                     id="modal-title"
                   >
-                    ตรวจสอบข้อมูล
+                    คุณได้เพิ่มตารางทานยา
                   </h3>
                   <div className="mt-2">
-                    <p className="text-xl text-gray-600">กรุณาตรวจสอบข้อมูล</p>
+                    <p className="text-xl text-gray-600">กรุณารอรับการแจ้งเตือน</p>
                   </div>
                 </div>
               </div>
             </div>
             <div className="bg-gray-50 px-4 py-3 sm:px-6 flex items-center gap-x-4">
               <button
-              onClick={onCancel}
-                type="button"
-                className=" w-full h-full rounded-md border border-primary-400 shadow-sm px-4 py-2 bg-white text-lg font-medium text-primary-400 "
-              >
-                ยกเลิก
-              </button>{" "}
-              <button
               onClick={onConfirm}
                 type="button"
                 className="w-full h-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary-400 text-lg font-medium text-white"
               >
-                ยืนยัน
+                ตกลง
               </button>
             </div>
           </div>
@@ -49,4 +42,4 @@ const ConfirmDialog = ({onCancel,onConfirm}) => {
     </div>
   );
 };
-export default ConfirmDialog;
+export default SuccessDialog;
