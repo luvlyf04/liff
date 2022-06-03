@@ -1,11 +1,12 @@
 import { getSchedule } from "../service/google-sheet";
-import React, {useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export const Home = () => {
-  const [mySchedule, setMySchedule]=useState([])
+  const [mySchedule, setMySchedule] = useState([]);
   useEffect(() => {
     getSchedule().then((response) => {
-      setMySchedule(response.data)
+      console.log(response.data);
+      setMySchedule(response.data);
     });
   }, []);
   const pharmacyImages = [
@@ -20,6 +21,8 @@ export const Home = () => {
     meal,
     tablet,
     pharmacyImg,
+    time,
+    
   }) => {
     return (
       <div className="w-full bg-gray-200 rounded flex px-6 py-4 gap-x-12 my-4">
@@ -30,6 +33,13 @@ export const Home = () => {
             {takeTime} {meal}
           </p>
           <p>จำนวน {tablet} เม็ด</p>
+          <p>
+            {new Intl.DateTimeFormat("th", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            }).format(new Date(time))}
+          </p>
         </div>
       </div>
     );
@@ -43,13 +53,14 @@ export const Home = () => {
         Do not forget to take your medicine
       </div>
       <div className="text-lg text-primary-400 font-bold mt-3">Schedule</div>
-      {mySchedule.map(() => {
+      {mySchedule.sort((a,b)=>new Date(a.time) - new Date(b.time)).map((schedule) => {
         return (
           <PharmacyCard
-            pharmacyName="ยาแก้ปวด"
-            takeTime="ก่อนอาหาร"
-            meal="กลางวัน"
-            tablet="1"
+            time={schedule.time}
+            pharmacyName={schedule.pharmacyName}
+            takeTime={schedule.takeTime}
+            meal={schedule.meal}
+            tablet={schedule.tablet}
             pharmacyImg={
               pharmacyImages[Math.floor(Math.random() * pharmacyImages.length)]
             }

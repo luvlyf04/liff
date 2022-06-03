@@ -95,7 +95,7 @@ function App() {
         <Route path="add" element={<Add detail={detail} />} />
       </Routes>
       {!isWelcomePage && (
-        <div className="flex justify-around bg-blue-300 fixed bottom-0 w-full py-6">
+        <div className="flex justify-around bg-primary-200 fixed bottom-0 w-full py-6">
           <button onClick={() => navigate("/home")}>Home</button>
           <button
             onClick={() => {
