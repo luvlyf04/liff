@@ -117,7 +117,7 @@ export const Add = ({ detail }) => {
           />
           <div className="text-primary-400 mt-4">รับประทานครั้งละ (เม็ด)</div>
           <input
-          min={1}
+            min={1}
             required
             type="number"
             className="border border-gray-400 rounded w-full h-10 px-3 mt-2"
@@ -130,7 +130,7 @@ export const Add = ({ detail }) => {
           />
           <div className="text-primary-400 mt-4">จำนวนยาทั้งหมด</div>
           <input
-          min={1}
+            min={1}
             required
             type="number"
             className="border border-gray-400 rounded w-full h-10 px-3 mt-2"

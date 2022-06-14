@@ -42,13 +42,13 @@ function App() {
             userId: profile.userId,
           });
         } else {
-          // await liff.login();
-          // const profile = await liff.getProfile();
-          // console.log(profile)
-          // setDetail({
-          //   ...detail,
-          //   userId:profile.userId,
-          // })
+          await liff.login();
+          const profile = await liff.getProfile();
+          console.log(profile);
+          setDetail({
+            ...detail,
+            userId: profile.userId,
+          });
         }
       },
       (err) => console.error(err.code, err.message)

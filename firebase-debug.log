@@ -1,0 +1,29 @@
+[debug] [2022-06-14T14:38:18.280Z] ----------------------------------------------------------------------
+[debug] [2022-06-14T14:38:18.280Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2022-06-14T14:38:18.281Z] CLI Version:   11.1.0
+[debug] [2022-06-14T14:38:18.281Z] Platform:      darwin
+[debug] [2022-06-14T14:38:18.281Z] Node Version:  v16.15.1
+[debug] [2022-06-14T14:38:18.281Z] Time:          Tue Jun 14 2022 21:38:18 GMT+0700 (Indochina Time)
+[debug] [2022-06-14T14:38:18.281Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-06-14T14:38:18.307Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-06-14T14:38:18.308Z] > authorizing via signed-in user (maysa250404@gmail.com)
+[debug] [2022-06-14T14:38:18.308Z] [iam] checking project notification-demo-dc9b6 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-06-14T14:38:18.308Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/notification-demo-dc9b6:testIamPermissions [none]
+[debug] [2022-06-14T14:38:18.309Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/notification-demo-dc9b6:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-06-14T14:38:19.614Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/notification-demo-dc9b6:testIamPermissions 200
+[debug] [2022-06-14T14:38:19.614Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/notification-demo-dc9b6:testIamPermissions {}
+[debug] [2022-06-14T14:38:19.614Z] [iam] error while checking permissions, command may fail: FirebaseError: Authorization failed. This account is missing the following required permissions on project notification-demo-dc9b6:
+
+  firebase.projects.get
+  firebasehosting.sites.update
+[debug] [2022-06-14T14:38:19.615Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/notification-demo-dc9b6 [none]
+[debug] [2022-06-14T14:38:20.326Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/notification-demo-dc9b6 403
+[debug] [2022-06-14T14:38:20.326Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/notification-demo-dc9b6 {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2022-06-14T14:38:20.327Z] HTTP Error: 403, The caller does not have permission
+[debug] [2022-06-14T14:38:20.453Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at responseToError (/usr/local/lib/node_modules/firebase-tools/lib/responseToError.js:49:12)
+    at RetryOperation._fn (/usr/local/lib/node_modules/firebase-tools/lib/apiv2.js:287:77)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[error] 
+[error] Error: Failed to get Firebase project notification-demo-dc9b6. Please make sure the project exists and your account has permission to access it.
