@@ -63,9 +63,10 @@ export const Home = () => {
         Notify For Medicine
       </div>
       <div className="text-gray-400 mt-2 text-lg">
-        Do not forget to take your medicine
+       กรุณาอย่าลืมทานยา
+      {/* เปลี่ยนหัวข้อ 63 66 */}
       </div>
-      <div className="text-lg text-primary-400 font-bold mt-3">Schedule</div>
+      <div className="text-lg text-primary-400 font-bold mt-3">ตารางทานยา</div>
       {mySchedule
         .sort((a, b) => new Date(a.time) - new Date(b.time))
         .map((schedule) => {

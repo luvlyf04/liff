@@ -56,11 +56,8 @@ function App() {
   };
   const scanQR = async () => {
     try {
-      console.log(detail);
       const result = await liff.scanCodeV2();
-      console.log(result.value);
       const data = JSON.parse(result.value);
-      console.log(data);
       setDetail({
         fullName: data.fullName,
         pharmacyName: data.pharmacyName,
@@ -72,16 +69,6 @@ function App() {
       });
       navigate("/add");
 
-      // insert({
-      //   time: new Date(),
-      //   fullName: detail.fullName,
-      //   pharmacyName: detail.pharmacyName,
-      //   quantity: detail.quantity,
-      //   takeTime: detail.takeTime,
-      //   meal: detail.meal,
-      //   tablet: detail.tablet,
-      //   userId: userId,
-      // })
     } catch (error) {
       alert(error);
     }
