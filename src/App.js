@@ -96,19 +96,30 @@ function App() {
       </Routes>
       {!isWelcomePage && (
         <div className="flex justify-around bg-primary-200 fixed bottom-0 w-full py-6">
-          <button onClick={() => navigate("/home")}>Home</button>
+          <button onClick={() => navigate("/home")} className="flex flex-col items-center">
+            <img src="assets/images/home.svg" className="w-7"></img>
+            {/* ปรับขนาดรูปไอคอน เปลี่ยนตรง w ของ class img */}
+            <p>Home</p>
+          </button>
           <button
             onClick={() => {
               scanQR();
             }}
+            className="flex flex-col items-center"
           >
-            Scan QR
+            <img src="assets/images/maximize.svg" className="w-7"></img>
+            <p>Scan Qr</p>
           </button>
-          <button onClick={() => navigate("/add")}>Add</button>
+          <button onClick={() => navigate("/add")} className="flex flex-col items-center">
+            <img src="assets/images/file-plus.svg " className="w-7"></img>
+            <p>Add</p>
+          </button>
         </div>
       )}
     </div>
   );
 }
+
+// ถ้าจะไม่ใส่คำอธิบายไอคอน ลบแท็ก p ออก
 
 export default App;
