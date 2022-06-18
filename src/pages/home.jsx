@@ -3,10 +3,12 @@ import React, { useEffect, useState } from "react";
 
 export const Home = () => {
   const [mySchedule, setMySchedule] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     getSchedule().then((response) => {
       console.log(response.data);
       setMySchedule(response.data);
+      setLoading(false);
     });
   }, []);
   const pharmacyImages = [
@@ -50,9 +52,18 @@ export const Home = () => {
             {takeTime} {meal}
           </p>
           <p>จำนวน {tablet} เม็ด</p>
-          <p>
-            {getDateString()} 
-          </p>
+          <p>{getDateString()}</p>
+        </div>
+      </div>
+    );
+  };
+  const EmptySchedule = () => {
+    return (
+      <div className="bg-gray-100 w-full flex items-center gap-x-12 animate-pulse p-4">
+        <div className="bg-gray-200 h-20 w-20"></div>
+        <div className="flex flex-col gap-y-4 ">
+          <div className="bg-gray-300 w-16 h-4"></div>
+          <div className="bg-gray-200 w-32 h-8"></div>
         </div>
       </div>
     );
@@ -63,28 +74,37 @@ export const Home = () => {
         Notify For Medicine
       </div>
       <div className="text-gray-400 mt-2 text-lg">
-       กรุณาอย่าลืมทานยา
-      {/* เปลี่ยนหัวข้อ 63 66 */}
+        กรุณาอย่าลืมทานยา
+        {/* เปลี่ยนหัวข้อ 63 66 */}
       </div>
+      <div className="bg-primary-200 w-full h-1 mt-2"></div>
       <div className="text-lg text-primary-400 font-bold mt-3">ตารางทานยา</div>
-      {mySchedule
-        .sort((a, b) => new Date(a.time) - new Date(b.time))
-        .map((schedule) => {
-          return (
-            <PharmacyCard
-              time={schedule.time}
-              pharmacyName={schedule.pharmacyName}
-              takeTime={schedule.takeTime}
-              meal={schedule.meal}
-              tablet={schedule.tablet}
-              pharmacyImg={
-                pharmacyImages[
-                  Math.floor(Math.random() * pharmacyImages.length)
-                ]
-              }
-            ></PharmacyCard>
-          );
-        })}
+      {loading ? (
+        <div className="flex flex-col gap-y-4">
+          <EmptySchedule></EmptySchedule>
+          <EmptySchedule></EmptySchedule>
+          <EmptySchedule></EmptySchedule>
+        </div>
+      ) : (
+        mySchedule
+          .sort((a, b) => new Date(a.time) - new Date(b.time))
+          .map((schedule) => {
+            return (
+              <PharmacyCard
+                time={schedule.time}
+                pharmacyName={schedule.pharmacyName}
+                takeTime={schedule.takeTime}
+                meal={schedule.meal}
+                tablet={schedule.tablet}
+                pharmacyImg={
+                  pharmacyImages[
+                    Math.floor(Math.random() * pharmacyImages.length)
+                  ]
+                }
+              ></PharmacyCard>
+            );
+          })
+      )}
     </div>
   );
 };

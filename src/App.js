@@ -82,7 +82,7 @@ function App() {
         <Route path="add" element={<Add detail={detail} />} />
       </Routes>
       {!isWelcomePage && (
-        <div className="flex justify-around bg-primary-200 fixed bottom-0 w-full py-6">
+        <div className="flex justify-around bg-primary-200 fixed bottom-0 w-full py-3">
           <button onClick={() => navigate("/home")} className="flex flex-col items-center">
             <img src="assets/images/home.svg" className="w-7"></img>
             {/* ปรับขนาดรูปไอคอน เปลี่ยนตรง w ของ class img */}
