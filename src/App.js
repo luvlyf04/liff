@@ -98,7 +98,7 @@ function App() {
             <p>Scan Qr</p>
           </button>
           <button onClick={() => navigate("/add")} className="flex flex-col items-center">
-            <img src="assets/images/file-plus.svg " className="w-7"></img>
+            <img src="assets/images/plus-square.svg " className="w-7"></img>
             <p>Add</p>
           </button>
         </div>
