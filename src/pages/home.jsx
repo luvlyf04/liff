@@ -1,19 +1,20 @@
 import { getSchedule } from "../service/google-sheet";
 import React, { useEffect, useState } from "react";
 
-const liff = window.liff; //ต้องการ userId จาก liff 
+const liff = window.liff; //ต้องการ userId จาก liff
 export const Home = () => {
   const [mySchedule, setMySchedule] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     fetchSchedule();
   }, []);
-  const fetchSchedule = async() => {
+  
+  const fetchSchedule = async () => {
     liff.init({ liffId: "1656846738-laQ554Ad" }, async () => {
       const profile = await liff.getProfile();
       getSchedule(profile.userId).then((response) => {
-        console.log(response.data);
         setMySchedule(response.data);
+        setLoading(false);
       });
     });
   };
