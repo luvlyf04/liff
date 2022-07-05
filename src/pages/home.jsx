@@ -8,7 +8,7 @@ export const Home = () => {
   useEffect(() => {
     fetchSchedule();
   }, []);
-  
+
   const fetchSchedule = async () => {
     liff.init({ liffId: "1656846738-laQ554Ad" }, async () => {
       const profile = await liff.getProfile();
@@ -23,6 +23,47 @@ export const Home = () => {
     "/assets/images/med2.png",
     "/assets/images/med3.png",
     "/assets/images/med4.png",
+    "/assets/images/med5.png",
+    "/assets/images/med6.png",
+    "/assets/images/med7.png",
+    "/assets/images/med8.png",
+    "/assets/images/med9.png",
+    "/assets/images/med10.png",
+    "/assets/images/med11.png",
+    "/assets/images/med12.png",
+    "/assets/images/med13.png",
+    "/assets/images/med14.png",
+    "/assets/images/med15.png",
+    "/assets/images/med16.png",
+    "/assets/images/med17.png",
+    "/assets/images/med18.png",
+    "/assets/images/med21.png",
+    "/assets/images/med22.png",
+    "/assets/images/med23.png",
+    "/assets/images/med24.png",
+    "/assets/images/med25.png",
+    "/assets/images/med26.png",
+    "/assets/images/med27.png",
+    "/assets/images/med28.png",
+    "/assets/images/med29.png",
+    "/assets/images/med30.png",
+    "/assets/images/med31.png",
+    "/assets/images/med32.png",
+    "/assets/images/med33.png",
+    "/assets/images/med34.png",
+    "/assets/images/med35.png",
+    "/assets/images/med36.png",
+    "/assets/images/med37.png",
+    "/assets/images/med38.png",
+    "/assets/images/med39.png",
+    "/assets/images/med40.png",
+    "/assets/images/med41.png",
+    "/assets/images/med42.png",
+    "/assets/images/med43.png",
+    "/assets/images/med44.png",
+    "/assets/images/med45.png",
+    "/assets/images/med46.png",
+    "/assets/images/med47.png",
   ];
   const PharmacyCard = ({
     pharmacyName,
